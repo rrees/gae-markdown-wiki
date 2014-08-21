@@ -1,0 +1,23 @@
+application: gae-markdown-wiki
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /public
+  static_dir: public
+- url: /
+  script: home.app
+  secure: always
+- url: /edit
+  script: edit.app
+  secure: always
+  login: required
+- url: /.*
+  script: wiki.app
+  secure: always
+
+libraries:
+- name: jinja2
+  version: latest
