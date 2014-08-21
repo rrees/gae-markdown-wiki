@@ -1,4 +1,5 @@
 import os
+import logging
 
 import webapp2
 import jinja2
@@ -14,7 +15,9 @@ templates = jinja2.Environment(
 
 
 class EditPage(webapp2.RequestHandler):
-	def get(self):
+	def get(self, path):
+
+		logging.debug(path)
 
 		user = users.get_current_user()
 
@@ -26,5 +29,5 @@ class EditPage(webapp2.RequestHandler):
 		self.response.write(template.render(template_values))
 
 app = webapp2.WSGIApplication([
-	webapp2.Route(r'/edit', handler=EditPage),
+	webapp2.Route(r'/<path:.+?>/edit', handler=EditPage),
 	], debug=True)

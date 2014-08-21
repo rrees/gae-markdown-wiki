@@ -10,7 +10,7 @@ handlers:
 - url: /
   script: home.app
   secure: always
-- url: /edit
+- url: /.+?/edit
   script: edit.app
   secure: always
   login: required

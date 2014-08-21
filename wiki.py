@@ -27,5 +27,5 @@ class ShowPage(webapp2.RequestHandler):
 		self.response.write(template.render(template_values))
 
 app = webapp2.WSGIApplication([
-	webapp2.Route(r'/test', handler=ShowPage),
+	webapp2.Route(r'/<path:.+>', handler=ShowPage),
 	], debug=True)
